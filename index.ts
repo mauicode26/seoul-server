@@ -1,8 +1,11 @@
 import express from "express";
 import { json } from "body-parser";
 import { CommandPayloadDTO } from "./types";
+import { argv } from "bun";
 
-const REMOTE_COMMAND = "curl localhost:3030"
+// const REMOTE_COMMAND = "curl localhost:3030"
+const REMOTE_COMMAND = "curl victim-server:3030" // for testing in docker compose
+const PORT = +argv[2] || 7789 
 
 const app = express();
 
@@ -33,9 +36,9 @@ app.post("/api/tools/seoul/remote-command", (req, res) => {
 });
 
 function runServer() {
-    app.listen(7789, () => {
-        console.log("Server is running on http://localhost:7789");
-    });
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
 }
 
 runServer()

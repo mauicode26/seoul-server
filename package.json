@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "compile": "bun build index.ts --outfile bin/seoul-server --compile"
+    "compile-mac": "bun build index.ts --target=bun-darwin-arm64 --outfile bin/seoul-server --compile",
+    "compile-linux": "bun build index.ts --target=bun-linux-arm64 --outfile bin/seoul-server --compile"
   },
   "devDependencies": {
     "@types/bun": "latest"
